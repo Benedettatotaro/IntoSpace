@@ -106,6 +106,7 @@ public class ViewMuseum extends SurfaceView implements Runnable {
                 appoggio.remove("tempGems");
                 appoggio.remove("gameCounter");
                 appoggio.remove("flagLevel");
+                appoggio.remove("isMute");
 
                 //per l'account admin imposta le gemme a 50
                 if(prefs.getString("email", "").equals("Admin@gmail.com"))
@@ -264,7 +265,7 @@ public class ViewMuseum extends SurfaceView implements Runnable {
             distance = canvas.getWidth();
             canvas.drawBitmap(hiroki.charOrientation(),hiroki.charMovement(),screenY-floor.getHeight()-hiroki.getStopAnimation().getHeight(),paint); //screenY-floor.getHeight()-character.getHeight()
             //canvas.drawBitmap(ranking,screenX-ranking.getWidth()-10*screenRatioX,10*screenRatioY,paint);
-            canvas.drawBitmap(ranking,canvas.getWidth()/2-ranking.getWidth()/2,0,paint);
+            canvas.drawBitmap(ranking,canvas.getWidth()/2-ranking.getWidth()/2,10*screenRatioX,paint);
             canvas.drawBitmap(history,(screenX-pause.getWidth()-10*screenRatioX+canvas.getWidth()/2+ranking.getWidth()/2)/2-history.getWidth()/2,0,paint);
             canvas.drawBitmap(pause,screenX-pause.getWidth()-10*screenRatioX,10*screenRatioX,paint);
             canvas.drawBitmap(login,10*screenRatioX,screenY-10*screenRatioY-login.getHeight(),paint);
@@ -407,19 +408,18 @@ public class ViewMuseum extends SurfaceView implements Runnable {
             i.putExtras(bundle);
             getContext().startActivity(i);
 
-
         }else if(prefs.getInt("gameCounter", 0) != 0)// controllo se si sta riferendo al portrait
         {
             hallactivity.callTravel(flag); //passa il flag per chiamare il viaggo
 
-        }else if(prefs.getInt("flagLevel",-1) == 0){
+        }else if(prefs.getInt("flagLevel",-1) == 0&&prefs.getInt("xPosition",0) != 0){
             Bundle bundle = new Bundle(1);
             bundle.putShort("flagPlanet", flag); //setta il flag nel boundle per chiamare il pianeta
             Intent i = new Intent(getContext(), GameActivityLandscape.class);
             i.putExtras(bundle);
             getContext().startActivity(i);
 
-        }else if(prefs.getInt("flagLevel",-1) == 1){
+        }else if(prefs.getInt("flagLevel",-1) == 1&&prefs.getInt("xPosition",0) != 0){
             Bundle bundle = new Bundle(1);
             bundle.putShort("flagPlanet", flag); //setta il flag nel boundle per chiamare il pianeta
             Intent i = new Intent(getContext(), GameActivityLandscape.class);
@@ -447,7 +447,7 @@ public class ViewMuseum extends SurfaceView implements Runnable {
                 }
                 if((distance/2-ranking.getWidth()/2 < event.getX() && event.getX() < distance/2 + ranking.getWidth()/2)
                         &&
-                     event.getY() < ranking.getHeight()){
+                     event.getY() < ranking.getHeight()+10*screenRatioX&&event.getY()>10*screenRatioX){
                     short flag=1,flagActivity=1;// flagActivity in questo caso e inutile
                     hallactivity.callManager(flag,flagActivity);
                     break;

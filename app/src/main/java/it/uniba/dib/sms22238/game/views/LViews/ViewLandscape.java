@@ -91,7 +91,7 @@ public class ViewLandscape extends SurfaceView implements Runnable {
                 floors[i]=floor;
             }
             else if(i==0){
-                floor.x=0;
+                floor.x=prefs.getInt("xPosition",0);
                 floors[i]=floor;
             }
             else{
@@ -263,7 +263,7 @@ public class ViewLandscape extends SurfaceView implements Runnable {
                 //se l'astronuta si scontra con uno degli alieni
                 if(!prefs.getBoolean("isMute",false))
                     soundPool.play(soundDeath,1,1,0,0,1); //riproduce il suono di aver perso
-                isGameOver=true; //perdi
+                //isGameOver=true; //perdi
             }
         }
         //rimuove tutti gli alieni usciti dallo schermo
@@ -301,10 +301,10 @@ public class ViewLandscape extends SurfaceView implements Runnable {
         }
 
         if(counter==10&&character.y>=screenY-floors[0].floor.getHeight()-character.getStopAnimation().getHeight()+1){  //se non è più su nessun pavimento
-            character.y=-20;
+            //character.y=-20;
             if(!prefs.getBoolean("isMute",false))
                 soundPool.play(soundDeath,1,1,0,0,1); //riproduce il suono di aver perso
-            isGameOver=true; //perdi
+            //isGameOver=true; //perdi
         }
 
         if(character.y<100&&!character.isPoweringUp){
@@ -342,7 +342,8 @@ public class ViewLandscape extends SurfaceView implements Runnable {
 
             Canvas canvas = getHolder().lockCanvas();
             canvas.drawBitmap(background.background,background.x,background.y,paint);
-            canvas.drawText(""+gemCounter,30*screenRatioY,30*screenRatioY,text);
+            text.setTextSize(68);
+
 
             for(Floor floor:floors) {
                 canvas.drawBitmap(floor.floor,floor.x,floor.y,paint);
@@ -427,7 +428,7 @@ public class ViewLandscape extends SurfaceView implements Runnable {
                 gameActivityLandscape.finish();
                 return;
             }
-
+            canvas.drawText(""+gemCounter,30*screenRatioY,50*screenRatioY,text);
             if(isGameOver){ //se perdi
 
                 isPlaying=false; //il gioco si blocca

@@ -182,7 +182,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             if(ship.isPowerup){
                 canvas.drawBitmap(ship.powerup,ship.xPoweup,ship.yPowerup,paint);
             }
-            canvas.drawText(""+gemCounter,canvas.getWidth()/2,30*screenRatioY,text);
+            text.setColor(Color.WHITE);
+            text.setTextSize(68);
             canvas.drawBitmap(pause,screenX-pause.getWidth()-10*screenRatioX,10*screenRatioX,paint);
             for(Enemy enemy:enemies){
                 canvas.drawBitmap(enemy.enemy,enemy.x,enemy.y,paint);
@@ -200,9 +201,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
                     canvas.drawBitmap(bullet.bullet,bullet.x,bullet.y,paint);
                 }
             }
-
-
-            if(gameCounter>600){  //se il gioco finisce salva i dati delle gemme
+            canvas.drawText(""+gemCounter,canvas.getWidth()/2,50*screenRatioY,text);
+            if(gameCounter>1600){  //se il gioco finisce salva i dati delle gemme
 
                 Log.d("flag",prefs.getAll().toString());
                 if(prefs.getString("email", "") != "")
@@ -240,15 +240,11 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
                 canvas.drawBitmap(turnIcon,canvas.getWidth()/2-turnIcon.getWidth()/2,yPos-turnIcon.getWidth(),paint);
                 canvas.drawText(gameActivityPortrait.getString(R.string.A), xPos,yPos,textPaint);
 
-                //sleep(10000);
-
                 Log.d("flag",prefs.getAll().toString());
                 getHolder().unlockCanvasAndPost(canvas);
                 gameActivityPortrait.callPlanet(flagPlanet);
                 return;
 
-
-                //TO DO: CHIAMARE L'ACTIVITY DELLA LUNA
             }
 
             if(isGameOver){ //se hai perso
@@ -392,6 +388,9 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
                 }
                 if(Rect.intersects(enemy.getCollisionShape(),ship.getCollisionShape())){
                     if(ship.isPoweringup){  //se è il powerup non perdi
+                        enemy.shot=true;
+                        enemy.xExplosion=enemy.x;
+                        enemy.yExplosion=enemy.y;
                         if(enemy.isGem){
                             enemy.gemShot=true;
                             enemy.xGem=enemy.x+enemy.enemy.getWidth()/2-enemy.gem.getWidth()/2;

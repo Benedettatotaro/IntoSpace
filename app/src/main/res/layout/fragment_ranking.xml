@@ -61,12 +61,14 @@
             android:layout_alignParentLeft="true"
             android:layout_margin="20dp"
             android:text="@string/Back"
+            android:textAllCaps="false"
             android:background="@drawable/edittextbackground"/>
         <Button
             android:id="@+id/export"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:textAllCaps="false"
             android:layout_margin="20dp"
             android:text="@string/Export"
             android:background="@drawable/edittextbackground"/>

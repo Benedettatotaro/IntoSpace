@@ -54,6 +54,11 @@ public class Character {
 
             this.moveAnimation1= Bitmap.createScaledBitmap(moveAnimation1,moveAnimation1.getWidth()/7, moveAnimation1.getHeight()/7,false);
             this.moveAnimation2 =Bitmap.createScaledBitmap(moveAnimation2,moveAnimation2.getWidth()/7, moveAnimation2.getHeight()/7,false);
+            if(!isRight){ //se sta andando a sinistra gira subito la bitmap
+                this.stopAnimation=Bitmap.createScaledBitmap(stopAnimation,-stopAnimation.getWidth(),stopAnimation.getHeight(),false);
+                this.moveAnimation1=Bitmap.createScaledBitmap(moveAnimation1,-moveAnimation1.getWidth(),moveAnimation1.getHeight(),false);
+                this.moveAnimation2=Bitmap.createScaledBitmap(moveAnimation2,-moveAnimation2.getWidth(),moveAnimation2.getHeight(),false);
+            }
         }
         else if(viewIdentificator==1){
             this.stopAnimation=BitmapFactory.decodeResource(res,R.drawable.rover_powerup1);
@@ -63,7 +68,14 @@ public class Character {
 
             this.moveAnimation1= Bitmap.createScaledBitmap(moveAnimation1,moveAnimation1.getWidth()/7, moveAnimation1.getHeight()/7,false);
             this.moveAnimation2 =Bitmap.createScaledBitmap(moveAnimation2,moveAnimation2.getWidth()/7, moveAnimation2.getHeight()/7,false);
+            if(!isRight){ //se sta andando a sinistra gira subito la bitmap
+                this.stopAnimation=Bitmap.createScaledBitmap(stopAnimation,-stopAnimation.getWidth(),stopAnimation.getHeight(),false);
+                this.moveAnimation1=Bitmap.createScaledBitmap(moveAnimation1,-moveAnimation1.getWidth(),moveAnimation1.getHeight(),false);
+                this.moveAnimation2=Bitmap.createScaledBitmap(moveAnimation2,-moveAnimation2.getWidth(),moveAnimation2.getHeight(),false);
+            }
         }
+
+
 
     }
     public void resetPoweringUp(){
@@ -211,116 +223,9 @@ public class Character {
         return charSpeed;
     }
 
-    //questo metodo prende in nput la posizione del personaggio lungo l'asse delle y
-    /*public void charJump(int y)
-    {
-        this.y=y;
-        //float charY = stopAnimation.getHeight();
-        if(isJumping)
-        {
-            int i;
-            for(i=0;i<3;i++){
-                this.y-=1;
-            }
-            /*for(int j=i;j>0; j--){
-                this.y-=10;
-            }*/
-       /* }
-        this.y=y;
-        //return charY;
-    }*/
 
     Rect collisionShape(){
         return  new Rect(charSpeed,y,charSpeed+charOrientation().getWidth(),y+charOrientation().getHeight());
     }
 
-
-
-   /* public void setBitmapResolution(Resources res, int viewIdentificator)
-    {
-        if(viewIdentificator == 0) // view luna
-        {
-            float density = res.getDisplayMetrics().density;
-
-            if (density >= 4.0)
-            {
-                // qui andranno tutte le bitmap che servono al museo
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-                Character char = new Character();
-
-            }else if (density >= 3.0) {
-
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 2.0) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 1.5) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 1.0) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-
-            }else{ floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);}
-
-        }else if(viewIdentificator == 1) // view marte
-        {
-            if (density >= 4.0)
-            {
-                // qui andranno tutte le bitmap che servono al museo
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-                Character char = new Character();
-
-            }else if (density >= 3.0) {
-
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 2.0) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 1.5) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 1.0) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-
-            }else{ floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);}
-        }else
-        {
-            if (density >= 4.0)
-            {
-                // qui andranno tutte le bitmap che servono al museo
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-
-                Character char = new Character();
-
-            }else if (density >= 3.0) {
-
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 2.0) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 1.5) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            }else if (density >= 1.0) {
-                floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-
-            }else{ floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);}
-
-        }
-
-
-
-        if (density >= 4.0)
-        {
-            // qui andranno tutte le bitmap che servono al museo
-            floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-            Character char = new Character();
-
-        }else if (density >= 3.0) {
-
-            floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-        }else if (density >= 2.0) {
-            floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-        }else if (density >= 1.5) {
-            floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-        }else if (density >= 1.0) {
-            floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);
-
-        }else{ floor= BitmapFactory.decodeResource(getResources(), R.drawable.floor_museo);}
-
-    }*/
 }

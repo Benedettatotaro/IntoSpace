@@ -104,9 +104,6 @@ public class RankingFragment extends Fragment {
                         CustomAdapter myCustomAdapter = new CustomAdapter(v.getContext(),list);
                         rankList.setAdapter(myCustomAdapter);
 
-                        //arr = new ArrayAdapter<String>(v.getContext(),R.layout.fragment_ranking,appoggio);
-                        //rankList.setAdapter(arr);
-
 
 
 
