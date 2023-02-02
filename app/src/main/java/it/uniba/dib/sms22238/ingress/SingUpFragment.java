@@ -74,7 +74,7 @@ public class SingUpFragment extends Fragment {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
                 String txt_checkPassword = checkPassword.getText().toString();
-                //auth = FirebaseAuth.getInstance();
+                auth = FirebaseAuth.getInstance();
 
                 if(TextUtils.isEmpty(txt_email))
                 {
@@ -145,6 +145,7 @@ public class SingUpFragment extends Fragment {
                     Intent i = new Intent(getActivity(), HallActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(i);
+                    getActivity().finish();
 
                 }else
                 {
