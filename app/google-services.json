@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "801463489740",
+    "project_id": "casodistudio-5b92e",
+    "storage_bucket": "casodistudio-5b92e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:801463489740:android:21ff2bd1d084025e535e69",
+        "android_client_info": {
+          "package_name": "it.uniba.dib.sms22238"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "801463489740-bgnlk4k57p7aips9c32tg65dim56fujs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCntDitT-n_WSZze4UFSBhcfgMhG6aPc68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "801463489740-bgnlk4k57p7aips9c32tg65dim56fujs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
