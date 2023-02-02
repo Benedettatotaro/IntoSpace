@@ -45,15 +45,8 @@ public class CustomAdapter extends BaseAdapter {
         TextView nome_player = (TextView)view.findViewById(R.id.nome_player);
         TextView numero_gemme = (TextView)view.findViewById(R.id.numero_gemme);
 
-        if(tempPlayer.getName().equals("ciao@gmail.com")){
-            nome_player.setText("b.totaro2@studenti.uniba.it");
-        }else if(tempPlayer.getName().equals("Admin@gmail.com")){
-            nome_player.setText("admin@studenti.uniba.it");
-        }
-        else{
-            nome_player.setText(tempPlayer.getName());
-        }
 
+        nome_player.setText(tempPlayer.getName());
         numero_gemme.setText(""+tempPlayer.getPunteggio());
 
         return view;
