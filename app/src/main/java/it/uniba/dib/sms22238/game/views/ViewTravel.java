@@ -202,7 +202,7 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
                 }
             }
             canvas.drawText(""+gemCounter,canvas.getWidth()/2,50*screenRatioY,text);
-            if(gameCounter>1600){  //se il gioco finisce salva i dati delle gemme
+            if(gameCounter>1000){  //se il gioco finisce salva i dati delle gemme
 
                 Log.d("flag",prefs.getAll().toString());
                 if(prefs.getString("email", "") != "")
@@ -293,8 +293,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             background_2.y+=10*screenRatioY;
         }
         else if(flagPlanet==1){ //su marte il background scorre più lentamente
-            background_1.y+=20*screenRatioY;
-            background_2.y+=20*screenRatioY;
+            background_1.y+=15*screenRatioY;
+            background_2.y+=15*screenRatioY;
         }
         if(background_1.y>screenY){ //se il background è sceso fuori dallo schermo
             background_1.y=-screenY;
@@ -304,13 +304,13 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
         }
 
         if(flagPlanet==0){ //sulla luna i nemici spuntano più lentamente
-            if(gameCounter%100==0){
+            if(gameCounter%300==0){
                 generateEnemies();
                 generatePowerup();
             }
         }
         else if(flagPlanet==1){ //su marte i nemici spuntano più velocemente
-            if(gameCounter%50==0){
+            if(gameCounter%200==0){
                 generateEnemies();
                 generatePowerup();
             }

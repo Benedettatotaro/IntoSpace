@@ -159,7 +159,7 @@ public class ViewLandscape extends SurfaceView implements Runnable {
         buttonRight=Bitmap.createScaledBitmap(buttonRight,buttonRight.getWidth()/30,buttonRight.getHeight()/30,false);
 
         xPowerup=random.nextInt((int) screenX*5);
-        yPowerup=random.nextInt((int) screenY-floors[0].floor.getHeight()-powerup.getHeight()-5);
+        yPowerup=random.nextInt((int) screenY-floors[0].floor.getHeight()-powerup.getHeight()-5-100)+100;
         powerUpIsOnTheScreen=true;
 
         pause=BitmapFactory.decodeResource(getResources(),R.drawable.pause);

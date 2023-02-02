@@ -473,7 +473,6 @@ public class ViewMuseum extends SurfaceView implements Runnable {
                             checkLevelStatus((short) 1);
                         }else{
                             isSwitchingToMars=true;
-                            hallactivity.callTravel((short)1);
                         }
 
                     }else
