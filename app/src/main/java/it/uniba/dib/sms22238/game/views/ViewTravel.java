@@ -447,13 +447,14 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
         editor.putInt("gameCounter", gameCounter);
         editor.putInt("flagLevel", flagPlanet);
         editor.commit();
-        /*if(isPressedPause){
+
+        if(isPressedPause){
             editor.putInt("xPosition",0);
             editor.putInt("tempGems",0);
             editor.putInt("gameCounter", 0);
             editor.putInt("flagLevel", -1);
             editor.commit();
-        }*/
+        }
 
         accelerometerOut();
         try {

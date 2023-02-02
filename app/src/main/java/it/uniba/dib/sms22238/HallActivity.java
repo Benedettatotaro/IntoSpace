@@ -106,9 +106,6 @@ public class HallActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this,
                         new String[]{permission}, requestCode);
             }
-        } else {
-            Toast.makeText(this, permission + " is already granted.",
-                    Toast.LENGTH_SHORT).show();
         }
     }
 
