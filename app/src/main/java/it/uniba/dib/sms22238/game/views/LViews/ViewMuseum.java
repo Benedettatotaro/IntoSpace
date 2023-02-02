@@ -420,17 +420,20 @@ public class ViewMuseum extends SurfaceView implements Runnable {
             case MotionEvent.ACTION_DOWN:
                 if(event.getX()>10*screenRatioX&&event.getX()<10*screenRatioX+login.getWidth()&&event.getY()<screenY-10*screenRatioX&&event.getY()>screenY-10*screenRatioY-login.getHeight()){
                     hallactivity.callLogin();
+                    break;
                 }
                 if(event.getX()>screenX-pause.getWidth()-10*screenRatioX&&event.getY()<10*screenRatioX+pause.getHeight()){
                     //se il tocco avviene nel quadrato in cui si trova il bottone di pausa
                     short flag=0,flagActivity=1;
                     hallactivity.callManager(flag,flagActivity);
+                    break;
                 }
                 if((distance/2-ranking.getWidth()/2 < event.getX() && event.getX() < distance/2 + ranking.getWidth()/2)
                         &&
                      event.getY() < ranking.getHeight()){
                     short flag=1,flagActivity=1;// flagActivity in questo caso e inutile
                     hallactivity.callManager(flag,flagActivity);
+                    break;
                 }
 
                 if(event.getX()>distance/2-300-apollo11.getWidth()&&event.getX()<distance/2-300&&event.getY()>0&&event.getY()<apollo11.getHeight()){
@@ -441,7 +444,7 @@ public class ViewMuseum extends SurfaceView implements Runnable {
                     }else {
                         isSwitchingToMoon = true;
                     }
-
+                    break;
                     //quando tocchi sulla teca dell'apollo 11 richiamare l'activity portrait
                 }
                 if((event.getX()>distance/2+300)&&(event.getX()<distance/2+300+roverMars.getWidth())&&event.getY()>screenY-floor.getHeight()-roverMars.getHeight()+5&&event.getY()<screenY-floor.getHeight()+5)
@@ -463,6 +466,7 @@ public class ViewMuseum extends SurfaceView implements Runnable {
                         toast.show();
 
                     }
+                    break;
                 }
                 if(event.getX()>(screenX-pause.getWidth()-10*screenRatioX+distance/2+ranking.getWidth()/2)/2-history.getWidth()/2
                         &&event.getX()<(screenX-pause.getWidth()-10*screenRatioX+distance/2+ranking.getWidth()/2)/2+history.getWidth()/2
