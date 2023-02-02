@@ -400,16 +400,31 @@ public class ViewMuseum extends SurfaceView implements Runnable {
 
         if(prefs.getInt("xPosition",0) != 0)// o landscape
         {
-            Bundle bundle=new Bundle(1);
+
+            Bundle bundle = new Bundle(1);
             bundle.putShort("flagPlanet", flag); //setta il flag nel boundle per chiamare il pianeta
             Intent i = new Intent(getContext(), GameActivityLandscape.class);
             i.putExtras(bundle);
             getContext().startActivity(i);
 
+
         }else if(prefs.getInt("gameCounter", 0) != 0)// controllo se si sta riferendo al portrait
         {
             hallactivity.callTravel(flag); //passa il flag per chiamare il viaggo
 
+        }else if(prefs.getInt("flagLevel",-1) == 0){
+            Bundle bundle = new Bundle(1);
+            bundle.putShort("flagPlanet", flag); //setta il flag nel boundle per chiamare il pianeta
+            Intent i = new Intent(getContext(), GameActivityLandscape.class);
+            i.putExtras(bundle);
+            getContext().startActivity(i);
+
+        }else if(prefs.getInt("flagLevel",-1) == 1){
+            Bundle bundle = new Bundle(1);
+            bundle.putShort("flagPlanet", flag); //setta il flag nel boundle per chiamare il pianeta
+            Intent i = new Intent(getContext(), GameActivityLandscape.class);
+            i.putExtras(bundle);
+            getContext().startActivity(i);
         }
 
     }

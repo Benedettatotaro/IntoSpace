@@ -52,7 +52,6 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
     private Bitmap pause,turnIcon;
     public static int gameCounter;
     public static int gemCounter;
-    private boolean isPressedPause = false;
     private Paint text;
     private int enemyCounter;
     public Background background_1,background_2;
@@ -203,7 +202,7 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             }
 
 
-            if(gameCounter>200){  //se il gioco finisce salva i dati delle gemme
+            if(gameCounter>600){  //se il gioco finisce salva i dati delle gemme
 
                 Log.d("flag",prefs.getAll().toString());
                 if(prefs.getString("email", "") != "")
@@ -285,9 +284,6 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             editor.putInt("flagLevel", flagPlanet);
             editor.commit();
 
-            //Intent i=new Intent(gameActivityPortrait, HallActivity.class);
-            //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-            //gameActivityPortrait.startActivity(i);
             gameActivityPortrait.finish();
 
         } catch (InterruptedException e) {
@@ -434,7 +430,6 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
     }
 
     public void resume(){
-        isPressedPause = false;
         accelerometerReset();
         isPlaying=true;
         thread=new Thread(this);
@@ -447,14 +442,6 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
         editor.putInt("gameCounter", gameCounter);
         editor.putInt("flagLevel", flagPlanet);
         editor.commit();
-
-        if(isPressedPause){
-            editor.putInt("xPosition",0);
-            editor.putInt("tempGems",0);
-            editor.putInt("gameCounter", 0);
-            editor.putInt("flagLevel", -1);
-            editor.commit();
-        }
 
         accelerometerOut();
         try {
@@ -497,7 +484,6 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             case MotionEvent.ACTION_DOWN:
                 if(event.getX()>screenX-pause.getWidth()-10*screenRatioX&&event.getY()<10*screenRatioX+pause.getHeight()){
                     //se il tocco avviene nel quadrato in cui si trova il bottone di pausa
-                    isPressedPause = true;
                     short flag=0,flagActivity=0;
                     gameActivityPortrait.callManager(flag,flagActivity);
                 }
@@ -514,8 +500,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
                 Intent i=new Intent(getContext(),HallActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(i);
-                //getActivity().onBackPressed(); //va indietro nella pila di chiamate
-                //e chiude l'activity manager
+                gameActivityPortrait.finish();
+
         }
         return true;
     }

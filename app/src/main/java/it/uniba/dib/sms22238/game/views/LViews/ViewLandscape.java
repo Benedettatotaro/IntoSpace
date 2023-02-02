@@ -573,13 +573,6 @@ public class ViewLandscape extends SurfaceView implements Runnable {
         editor.putInt("flagLevel", flagPlanet);
         editor.commit();
 
-        if(isPressedPause){
-            editor.putInt("tempGems",0);
-            editor.putInt("xPosition", 0);
-            editor.putInt("flagLevel", -1);
-            editor.commit();
-        }
-
         try {
             isPlaying = false;
             thread.join();
