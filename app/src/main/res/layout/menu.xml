@@ -17,9 +17,9 @@
             android:src="@drawable/icon"
             android:layout_toEndOf="@+id/back_arrow"
             android:id="@+id/icon"
-            android:layout_width="wrap_content"
+            android:layout_width="46dp"
             android:layout_centerVertical="true"
-            android:layout_height="wrap_content" />
+            android:layout_height="46dp" />
 
         <TextView
             android:layout_width="wrap_content"

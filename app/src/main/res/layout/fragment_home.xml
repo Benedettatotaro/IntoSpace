@@ -21,7 +21,9 @@
         android:fontFamily="sans-serif-condensed-medium"
         android:text="@string/Explanation"
         android:textColor="@color/white"
-        android:layout_marginVertical="80dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="80dp"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -29,8 +31,10 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
         android:layout_below="@+id/spiegazione"
         android:layout_centerHorizontal="true"
+        android:textSize="20sp"
         android:layout_marginBottom="154dp"
         android:textColor="@color/white" />
 
