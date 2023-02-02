@@ -78,8 +78,10 @@ public class ViewMuseum extends SurfaceView implements Runnable {
 
         //prefs.edit().clear().commit();  //per pulire il prefs
 
-
-
+        int tempGems = prefs.getInt("tempGems", 0);
+        int gameCounter = prefs.getInt("gameCounter", 0);
+        int xPosition = prefs.getInt("xPosition", 0);
+        int flagLevel = prefs.getInt("flagLevel", -1);
         email = prefs.getString("email", "").toString();
 
         this.hallactivity=activity;
@@ -194,8 +196,7 @@ public class ViewMuseum extends SurfaceView implements Runnable {
         buttonRight=BitmapFactory.decodeResource(getResources(),R.drawable.right_button);
         buttonRight=Bitmap.createScaledBitmap(buttonRight,buttonRight.getWidth()/30,buttonRight.getHeight()/30,false);
 
-        //charY= screenY - floor.getHeight() - character.getHeight();
-        //charX = 60;
+
         rectGround = new Rect(0,screenX-floor.getHeight(),screenX, screenY);
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M){
@@ -399,15 +400,16 @@ public class ViewMuseum extends SurfaceView implements Runnable {
 
         if(prefs.getInt("xPosition",0) != 0)// o landscape
         {
-                hallactivity.callTravel(flag); //passa il flag per chiamare il viaggo
+            Bundle bundle=new Bundle(1);
+            bundle.putShort("flagPlanet", flag); //setta il flag nel boundle per chiamare il pianeta
+            Intent i = new Intent(getContext(), GameActivityLandscape.class);
+            i.putExtras(bundle);
+            getContext().startActivity(i);
 
         }else if(prefs.getInt("gameCounter", 0) != 0)// controllo se si sta riferendo al portrait
         {
-                Bundle bundle=new Bundle(1);
-                bundle.putShort("flagPlanet", flag); //setta il flag nel boundle per chiamare il pianeta
-                Intent i = new Intent(getContext(), GameActivityLandscape.class);
-                i.putExtras(bundle);
-                getContext().startActivity(i);
+            hallactivity.callTravel(flag); //passa il flag per chiamare il viaggo
+
         }
 
     }
