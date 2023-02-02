@@ -388,6 +388,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
                 }
                 if(Rect.intersects(enemy.getCollisionShape(),ship.getCollisionShape())){
                     if(ship.isPoweringup){  //se è il powerup non perdi
+                        if(!prefs.getBoolean("isMute",false))
+                            soundPool.play(soundExplosion,1,1,0,0,1); //riproduce il suono dell'esplosione
                         enemy.shot=true;
                         enemy.xExplosion=enemy.x;
                         enemy.yExplosion=enemy.y;
