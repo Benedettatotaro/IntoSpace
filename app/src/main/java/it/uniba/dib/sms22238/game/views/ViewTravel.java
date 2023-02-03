@@ -204,6 +204,7 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             canvas.drawText(""+gemCounter,canvas.getWidth()/2,50*screenRatioY,text);
             if(gameCounter>1000){  //se il gioco finisce salva i dati delle gemme
 
+
                 Log.d("flag",prefs.getAll().toString());
                 if(prefs.getString("email", "") != "")
                 {
