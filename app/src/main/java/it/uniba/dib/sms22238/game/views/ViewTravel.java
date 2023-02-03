@@ -150,6 +150,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
 
     }
 
+    /*questa funzione genera randomicamente la posizione di un asteroide sullo schermo*/
+
     public void generateEnemies(){
         enemyCounter=random.nextInt(4)+1; //sceglie casualmente quanti nemici aggiungere allo schermo
 
@@ -162,6 +164,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
         }
 
     }
+
+    /*questa funzione genera randomicamente la posizione di un powerup sullo schermo*/
 
     public void generatePowerup(){
         if(!ship.isPowerup){  //se non ci sono altri power up sullo schermo
@@ -507,6 +511,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
         }
         return true;
     }
+
+    /*questa funzione aggiunge un proiettile all'arraylist di proiettili*/
 
     public void setBullet()
     {

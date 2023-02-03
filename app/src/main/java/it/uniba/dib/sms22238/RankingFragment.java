@@ -48,11 +48,6 @@ public class RankingFragment extends Fragment {
     Button export;
 
 
-    //TO DO: GESTIRE LA CLASSIFICA
-
-
-    // SELECT POINTS FROM USERS
-
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,8 +68,6 @@ public class RankingFragment extends Fragment {
                     getActivity().finish();
                 }
             });
-
-
 
 
             ArrayList<Player> list= new ArrayList<Player>();
@@ -105,17 +98,12 @@ public class RankingFragment extends Fragment {
                         rankList.setAdapter(myCustomAdapter);
 
 
-
-
                     }else
                     {
                         Toast.makeText(getContext(),R.string.FetchErr,Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-
-
-
 
         }else
         {
@@ -128,8 +116,10 @@ public class RankingFragment extends Fragment {
             public void onClick(View view) {
 
                 try {
+                    Toast.makeText(getContext(),R.string.SuccesExport,Toast.LENGTH_SHORT).show();
                     CreateExcel(appoggio,appoggio2);
                 } catch (IOException e) {
+                    Toast.makeText(getContext(),R.string.ErrorExport,Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
 
@@ -152,57 +142,16 @@ public class RankingFragment extends Fragment {
         HSSFRow row;
         HSSFCell cell ;
 
-
-
-
-
-
-
-             for(int i = 1; i <= list.length; i++)
+             for(int i = 0; i < list.length; i++)
             {
 
-
-
-
                 row =  sheet.createRow(i);
+                cell  = row.createCell(0);
+                cell.setCellValue(list[i]);
                 cell  = row.createCell(1);
-                cell.setCellValue(list[i-1]);
-                cell  = row.createCell(2);
-                cell.setCellValue(list2[i-1]);
+                cell.setCellValue(list2[i]);
 
             }
-
-
-
-
-
-
-       // row =  sheet.createRow(0);
-        //cell  = row.createCell(1);
-        //cell.setCellValue("Score");
-
-       // for(int i = 1; i < list2.length; i++)
-       // {
-        //    row =  sheet.createRow(i);
-         //   cell  = row.createCell(1);
-        //    cell.setCellValue(list2[i]);
-
-        //}
-
-
-
-       // cell.setCellValue(list[0]);
-       // row = sheet.createRow(1);
-        //cell = row.createCell(1);
-        //cell.setCellValue(list[1]);
-
-
-
-
-
-       // cell = row.createCell(1);
-       // cell.setCellValue(list[1]);
-
 
         FileOutputStream fileOut = new FileOutputStream(file);
         workbook.write(fileOut);

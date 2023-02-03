@@ -37,6 +37,8 @@
     <string name="Back">Indietro</string>
     <string name="FetchErr">"Impossibile acquisire dati dal database"</string>
     <string name="ConnRankErr">"Classifica non disponibile, connessione mancante"</string>
+    <string name="SuccesExport">"Classifica esportata correttamente"</string>
+    <string name="ErrorExport">"Errore nell'esportare la classifica"</string>
 
 
 
