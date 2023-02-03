@@ -26,8 +26,11 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 import it.uniba.dib.sms22238.GameActivityPortrait;
 import it.uniba.dib.sms22238.HallActivity;
@@ -350,8 +353,11 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
 
             }
         }
-        for(Bullet bullet:trash){
-            bullets.remove(bullet);
+
+        if(!trash.isEmpty()){
+            for(Bullet bullet:trash){
+                bullets.remove(bullet);
+            }
         }
 
         if(ship.isPowerup&&ship.yPowerup<=screenY){   //controllo per la velocità casuale del power up
