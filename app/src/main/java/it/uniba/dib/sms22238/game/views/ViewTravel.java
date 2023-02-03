@@ -82,8 +82,8 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
         text.setTextSize(50);
         text.setTextAlign(Paint.Align.CENTER);
 
-        background_1=new Background(getResources(),screenX,screenY);
-        background_2=new Background(getResources(),screenX,screenY);
+        background_1=new Background(getResources());
+        background_2=new Background(getResources());
 
         pause=BitmapFactory.decodeResource(getResources(),R.drawable.pause);
         pause=Bitmap.createScaledBitmap(pause,pause.getWidth()/30,pause.getHeight()/30,false);
