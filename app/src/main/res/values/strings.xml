@@ -44,7 +44,7 @@
     <string name="MoonStory">"During the cold war, between United Sates of America and soviet union, one of many contested goals was the first moon travel with the crew. The 20th of July 1969 three american astronauts started the Apollo 11 spacial mission to land on moon ground the next day. Help the space ship to reach the moon like the crew did that day"</string>
     <string name="MarsStory">"On February 18, 2021, NASA's Perseverance rover reached the Red Planet to search for traces of life. Help the spacecraft get to Mars to help the rover search for life."</string>
     <string name="Startstory">"Hi, my name is Hirooki and I'm passionate about astronomy. Today I'm visiting the Nasa museum in Milan. Come with me to discover the adventures hidden in space!"</string>
-    <string name="Recap">Resuming last Mission progress</string>
+    <string name="Recap">Resuming last mission progress</string>
 
     <!-- Strings related to  Travel-->
     <string name="GO">"Game Over!"</string>
