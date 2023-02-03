@@ -256,7 +256,7 @@ public class ViewLandscape extends SurfaceView implements Runnable {
         }
 
         for(Character alien:aliens){
-            if(alien.charSpeed<=0){
+            if(alien.charSpeed+alien.getStopAnimation().getWidth()<=0){
                 alienTrash.add(alien);
             }
             if(Rect.intersects(character.collisionShape(),alien.collisionShape())){

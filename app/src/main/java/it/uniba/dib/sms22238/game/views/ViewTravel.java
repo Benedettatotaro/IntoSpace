@@ -287,6 +287,9 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             editor.putInt("flagLevel", flagPlanet);
             editor.commit();
 
+            Intent i=new Intent(gameActivityPortrait, HallActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            gameActivityPortrait.startActivity(i);
             gameActivityPortrait.finish();
 
         } catch (InterruptedException e) {
