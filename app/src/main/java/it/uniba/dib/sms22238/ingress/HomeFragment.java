@@ -41,7 +41,9 @@ public class HomeFragment extends Fragment {
         backBtn=v.findViewById(R.id.back_arrow);
 
         prefs=getActivity().getSharedPreferences("game",getActivity().MODE_PRIVATE);
-        account.setText("Account: " + prefs.getString("email",""));
+        if(!prefs.getString("email","").isEmpty()){
+            account.setText("Account: " + prefs.getString("email",""));
+        }
 
         backBtn.setOnClickListener(view -> {
                 getActivity().onBackPressed();
