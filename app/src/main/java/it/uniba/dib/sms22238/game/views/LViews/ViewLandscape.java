@@ -548,11 +548,17 @@ public class ViewLandscape extends SurfaceView implements Runnable {
                     character.isJumping=false;
                     character.setIsPressed(true);
                     character.setIsRight(true);
-                    //isPlaying =false;
                 break;
-                }            case MotionEvent.ACTION_UP:
+                }
+                case MotionEvent.ACTION_UP:
                 character.setIsPressed(false);
                 character.isJumping=false;
+                break;
+            case MotionEvent.BUTTON_BACK:
+                Intent i=new Intent(getContext(),HallActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(i);
+                gameActivityLandscape.finish();
                 break;
         }
 
