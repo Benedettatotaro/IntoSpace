@@ -203,10 +203,9 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             }
 
             canvas.drawBitmap(ship.getShip(),ship.xShip,ship.yShip,paint);
-            if(!bullets.isEmpty()){
-                for(Bullet bullet:bullets){
-                    canvas.drawBitmap(bullet.bullet,bullet.x,bullet.y,paint);
-                }
+            for(Iterator<Bullet> iterator=bullets.iterator(); iterator.hasNext();){
+                Bullet bullet=iterator.next();
+                canvas.drawBitmap(bullet.bullet,bullet.x,bullet.y,paint);
             }
             canvas.drawText(""+gemCounter,canvas.getWidth()/2,50*screenRatioY,text);
             if(gameCounter>1000){  //se il gioco finisce salva i dati delle gemme
@@ -296,14 +295,10 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
     }
 
     private void update(){
-        if(flagPlanet==0){  //sulla luna il background scorre più lentamente
-            background_1.y+=10*screenRatioY;
-            background_2.y+=10*screenRatioY;
-        }
-        else if(flagPlanet==1){ //su marte il background scorre più lentamente
-            background_1.y+=15*screenRatioY;
-            background_2.y+=15*screenRatioY;
-        }
+
+        background_1.y+=10*screenRatioY;
+        background_2.y+=10*screenRatioY;
+
         if(background_1.y>screenY){ //se il background è sceso fuori dallo schermo
             background_1.y=-screenY;
         }
@@ -324,12 +319,11 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             }
         }
 
-        List<Bullet> trash= new ArrayList<>();
         List<Enemy> enemiesTrash=new ArrayList<>();
+
         if(!bullets.isEmpty()) {
-            for (Bullet bullet : bullets) {
-                if (bullet.y < 0)   //questo vuol dire che il proiettile è nello schermo va aggiunto alla lista dei proiettili trash
-                    trash.add(bullet);
+            for (Iterator<Bullet> iterator=bullets.iterator(); iterator.hasNext();) {
+                Bullet bullet=iterator.next();
                 bullet.y -= 50 * screenRatioY;  //muovere il proiettile di 50 pixel
 
                 if (!enemies.isEmpty()) {
@@ -354,11 +348,16 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
             }
         }
 
-        if(!trash.isEmpty()){
-            for(Bullet bullet:trash){
-                bullets.remove(bullet);
+        for(Iterator<Bullet> iterator=bullets.iterator(); iterator.hasNext();){
+            Bullet bullet=iterator.next();
+            if(bullet.y<0){   //l'elemento viene rimosso se esce dallo schermo
+                iterator.remove();
+                if(bullets.isEmpty()&&isPressed){  //se l'array list rimane vuoto mentre si sta sparando ne aggiunge uno per evitare che venga disegnato un bullet vuoto
+                    setBullet();
+                }
             }
         }
+
 
         if(ship.isPowerup&&ship.yPowerup<=screenY){   //controllo per la velocità casuale del power up
             ship.yPowerup+=ship.speedPowerup;
@@ -386,7 +385,14 @@ public class ViewTravel extends SurfaceView implements Runnable, SensorEventList
 
         if(!enemies.isEmpty()){
             for(Enemy enemy:enemies){ //per ogni asteroide
-                enemy.y+=enemy.speed; //assegna alla y una certa velocità
+                if(flagPlanet==0){  //sulla luna il background scorre più lentamente
+                    enemy.y+=enemy.speed; //assegna alla y una certa velocità
+
+                }
+                else if(flagPlanet==1){ //su marte il background scorre più lentamente
+                    enemy.y+=enemy.speed+5; //assegna alla y una certa velocità che è più veloce su Marte
+                }
+
                 if(enemy.y<screenY){  //finchè l'asteroide rimane sullo schermo aumenta la sua posizione lungo l'asse delle y
                     int bound=(int) (30*screenRatioY);
                     enemy.speed=random.nextInt(bound);
